@@ -1,0 +1,25 @@
+﻿@model IList<BlogWeb.Models.Usuario>
+<table class="table table-striped table-hover table-bordered">
+    <caption>Lista de usuários cadastrados.</caption>
+    <thead>
+        <tr>
+            <th>Usuário</th>
+            <th>E-Mail</th>
+            <th>Último Login</th>     
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var usuario in Model)
+        {
+            <tr>
+                <td>@usuario.UserName</td>
+                <td>@usuario.Email</td>
+                <td>@usuario.UltimoLogin</td>
+                <td>
+                    @Html.ActionLink("Remover", "Delete", new { Id = usuario.Id }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,45 @@
+﻿@model IList<BlogWeb.Models.Post>
+<h2>Lista de Posts</h2>
+@Html.ActionLink("Novo Post", "Novo", null, new { @class = "btn btn-primary" })
+<table class="table table-striped table-hover table-bordered">
+    <caption>Lista dos posts cadastrados no blog.</caption>
+    <thead>
+        <tr>
+            <th>Titulo</th>
+            <th>Resumo</th>
+            <th>Categoria</th>
+            <th>Publicado</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var post in Model)
+        {
+            <tr>
+                <td>@post.Titulo</td>
+                <td>@post.Resumo</td>
+                <td>@post.Categoria</td>
+                <td>
+                    @if (post.Autor != null)
+                    {
+                        @post.Autor.UserName
+                    }
+                </td>
+                <td>
+                    @if (post.Publicado)
+                    {
+                    <span>@string.Format("{0:dd/MM/yyyy}", post.DataPublicacao)</span>
+                    }
+                    else
+                    {
+                    <span>Não. @Html.ActionLink("Publicar agora", "Publicar", new { Id = post.Id }) </span>
+                    }
+            </td>
+            <td>
+                @Html.ActionLink("Remover", "Remover", new { Id = post.Id }, new { @class = "btn btn-danger" })
+                @Html.ActionLink("Editar", "Detalhe", new { Id = post.Id }, new { @class = "btn btn-primary" })
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

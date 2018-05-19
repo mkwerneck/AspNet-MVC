@@ -1,0 +1,15 @@
+﻿@model BlogWeb.Models.Post
+
+        @using (Html.BeginForm("Incluir", "Post"))
+        {
+            
+            @Html.EditorFor(p => p)
+            
+            <br /><br />
+
+            <button type="submit" class="btn btn-primary">Publicar</button>
+        }
+@section scripts{
+    @Html.Partial("Scripts")   
+}
+

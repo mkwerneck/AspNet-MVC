@@ -1,0 +1,13 @@
+﻿@model IList<BlogWeb.Models.Post>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@foreach (var p in Model) {
+    <article>
+        <h1>@p.Titulo</h1>
+        <p>@p.Resumo</p>
+        <p>@p.DataPublicacao</p>
+    </article>
+}
+
